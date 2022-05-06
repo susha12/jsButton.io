@@ -92,3 +92,8 @@ body{
   .span.two{
     display: none;
 }
+audio{
+    margin: 0 auto;
+    display: flex;
+    opacity: 1;
+}
