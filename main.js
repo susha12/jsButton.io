@@ -2,7 +2,7 @@ let time = { startTime: NaN, endTime: NaN };
 let button = document.body.querySelector('.span.one');
 let buttonTwo = document.body.querySelector('.span.two');
 let buttonThree = document.body.querySelector('.span.three');
-
+let song = document.querySelector('.soung');
 let textareOne = document.querySelector("#w3review");
 // box_color
 let boxColor = document.querySelector(".box_color");
@@ -10,17 +10,12 @@ let boxColorTop = 0;
 let boxColorLeft = 0;
 // inner letter
 let innerLetter = document.querySelectorAll(".letter");
-
-
-
 button.addEventListener('mousedown', button_mouseDownHandler);
-
 function button_mouseDownHandler() {
   button.removeEventListener('mousedown', button_mouseDownHandler);
   button.addEventListener('mouseup', button_mouseUpHandler);
   time.startTime = Date.now();
 }
-
 function button_mouseUpHandler() {
   button.removeEventListener('mouseup', button_mouseUpHandler);
   button.addEventListener('mousedown', button_mouseDownHandler);
@@ -29,13 +24,12 @@ function button_mouseUpHandler() {
 }
     // Array
     const alphabet_number = ['1','2','3','4','5','6'];
-    const alphabet_one = ['А','Б','В','Г','Д','Е'];
-    const alphabet_two = ['Ё','Ж','З','И','Й','К'];
-    const alphabet_three = ['Л','М','Н','О','П','Р'];
-    const alphabet_four = ['С','Т','У','Ф','Х','Ц'];
-    const alphabet_five = ['Ч','Ш','Щ','Ъ','Ы','Ь'];
-    const alphabet_six = ['Ы','Ь','Э','Ю','Я',' '];
-
+    const alphabet_one = [' ','А','Б','В','Г','Д'];
+    const alphabet_two = ['Е','Ё','Ж','З','И','Й'];
+    const alphabet_three = ['К','Л','М','Н','О','П'];
+    const alphabet_four = ['Р','С','Т','У','Ф','Х'];
+    const alphabet_five = ['Ц','Ч','Ш','Щ','Ъ','Ы'];
+    const alphabet_six = ['Ь','Э','Ю','Я','?','!'];
 const MILLESECOND_TO_SECOND = 1000;
 // alphabet
 let number = 1;
@@ -61,16 +55,12 @@ function inputTimeTwo({ startTime, endTime }) {
         number = 1;
         console.log(number);
        }
-
      }
-    
     else if(elapsedTime >= 0.5){
         button.style.display = "none";
         buttonTwo.style.display = "flex";
         boxColorTop=0;
-
         boxColor.style.top = boxColorTop + "px";
-        
             if (number == 1){
                 innerLetter[0].innerHTML = alphabet_one[0];
                 innerLetter[1].innerHTML = alphabet_one[1];
@@ -131,14 +121,9 @@ function inputTimeTwo({ startTime, endTime }) {
                 block = 6;
                 number=1;
             }
-        
     }
-
 }
-
 // buttonThree
-
-
 buttonTwo.addEventListener('mousedown', buttonTwo_mouseDownHandler);
 
 function buttonTwo_mouseDownHandler() {
@@ -146,14 +131,12 @@ function buttonTwo_mouseDownHandler() {
   buttonTwo.addEventListener('mouseup', buttonTwo_mouseUpHandler);
   time.startTime = Date.now();
 }
-
 function buttonTwo_mouseUpHandler() {
   buttonTwo.removeEventListener('mouseup', buttonTwo_mouseUpHandler);
   buttonTwo.addEventListener('mousedown', buttonTwo_mouseDownHandler);
   time.endTime = Date.now();
   inputTime(time);
 }
-
 // alphabet
 let numberTwo = 1;
 function inputTime({ startTime, endTime }) {
@@ -162,7 +145,6 @@ function inputTime({ startTime, endTime }) {
         if (numberTwo >6){
             numberTwo = 1;
         }
-
         boxColorTop += 36;
         if(boxColorTop < 200){
             boxColor.style.top = boxColorTop + "px";
@@ -177,7 +159,6 @@ function inputTime({ startTime, endTime }) {
         numberTwo=1;
        }
      }
-    
     else if(elapsedTime >= 0.5){
         boxColorTop=0;
         boxColor.style.top = boxColorTop + "px";
@@ -188,38 +169,46 @@ function inputTime({ startTime, endTime }) {
         }
         if (block == 1){
             textareOne.innerHTML += alphabet_one[numberTwo-1];
+            let audio = new Audio(); // Создаём новый элемент Audio
+            audio.src = `songs_alfabet/gen-${numberTwo-1}.mp3`; // Указываем путь к звуку "клика"
+            audio.autoplay = true;
             numberTwo=1;
-        
         }
         else if (block == 2){
             textareOne.innerHTML += alphabet_two[numberTwo-1];
+            let audio = new Audio(); // Создаём новый элемент Audio
+            audio.src = `songs_alfabet/gen-${numberTwo+5}.mp3`; // Указываем путь к звуку "клика"
+            audio.autoplay = true;
             numberTwo=1;
-        
         }
         else if (block == 3){
             textareOne.innerHTML += alphabet_three[numberTwo-1];
+            let audio = new Audio(); // Создаём новый элемент Audio
+            audio.src = `songs_alfabet/gen-${numberTwo+11}.mp3`; // Указываем путь к звуку "клика"
+            audio.autoplay = true;
             numberTwo=1;
-        
         }
         else if (block == 4){
             textareOne.innerHTML += alphabet_four[numberTwo-1];
+            let audio = new Audio(); // Создаём новый элемент Audio
+            audio.src = `songs_alfabet/gen-${numberTwo+17}.mp3`; // Указываем путь к звуку "клика"
+            audio.autoplay = true;
             numberTwo=1;
-        
         }
         else if (block == 5){
             textareOne.innerHTML += alphabet_five[numberTwo-1];
+            let audio = new Audio(); // Создаём новый элемент Audio
+            audio.src = `songs_alfabet/gen-${numberTwo+23}.mp3`; // Указываем путь к звуку "клика"
+            audio.autoplay = true;
             numberTwo=1;
-        
         }
         else if (block == 6){
             textareOne.innerHTML += alphabet_six[numberTwo-1];
+            let audio = new Audio(); // Создаём новый элемент Audio
+            audio.src = `songs_alfabet/gen-${numberTwo+29}.mp3`; // Указываем путь к звуку "клика"
+            audio.autoplay = true;
             numberTwo=1;
-        
         }
-        // for(let i = 0; i < 6; i++){
-        //         textareOne.innerHTML += alphabet_number[i][0];
-        //     }
-
         }
     }
 
